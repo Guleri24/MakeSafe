@@ -1,4 +1,6 @@
 # MakeSafe
+[![Build Status](https://travis-ci.com/Guleri24/MakeSafe.svg?branch=master)](https://travis-ci.com/Guleri24/MakeSafe)
+
  MakeSafe is a JavaFX application which encrypt and decrypt the text files.
 
 ## Installation
