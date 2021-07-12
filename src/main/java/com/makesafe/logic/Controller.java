@@ -1,4 +1,4 @@
-package sample;
+package com.makesafe.logic;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextInputDialog;
