@@ -2,11 +2,11 @@
 [![Build Status](https://travis-ci.com/Guleri24/MakeSafe.svg?branch=master)](https://travis-ci.com/Guleri24/MakeSafe)
 
  MakeSafe is a JavaFX application which encrypt and decrypt the text files.
-
+![main table](docs/images/MakeSafe-mainscreen.png)
 ## Installation
 
 ### Building From Sources
-To build GPV from sources you first need to have a working Java Development Kit 11 (JDK 11) or above, Maven, and Git 
+To build MakeSafe from sources you first need to have a working Java Development Kit 11 (JDK 11) or above, and Git 
 installed on your system. After installing the requirements, you open a terminal window (i.e., a command prompt) and 
 type the following:
 

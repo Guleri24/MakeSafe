@@ -3,7 +3,7 @@
   <component name="MavenCustomPomFilePath">
     <option name="mavenPomFileUrl" value="file://$MODULE_DIR$/maven-wrapper.properties" />
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_9">
     <output url="file://$MODULE_DIR$/../../target/classes" />
     <output-test url="file://$MODULE_DIR$/../../target/test-classes" />
     <content url="file://$MODULE_DIR$" />
@@ -20,5 +20,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:linux:17-ea+14" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:linux:17-ea+14" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:linux:17-ea+14" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:linux:17-ea+14" level="project" />
   </component>
 </module>

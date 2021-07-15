@@ -18,20 +18,17 @@ import java.util.List;
 import java.util.Optional;
 
 
-public class Controller {
+public class Operations {
 
     public TextField FileName;
     public AnchorPane MakeSafe;
-    private FileChooser fileChooser = new FileChooser();
+    private final FileChooser fileChooser = new FileChooser();
+    private File file;
 
-    public void onClickChoose() {
-        Stage stage = (Stage) MakeSafe.getScene().getWindow();
+    public void onClickChoose(Stage mainStage) {
         fileChooser.setTitle("Choose file ");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
-        File selectedFile = fileChooser.showOpenDialog(stage);
-        if (selectedFile != null) {
-            FileName.setText(selectedFile.getPath());
-        }
+       file = fileChooser.showOpenDialog(mainStage);
     }
 
     public void onClickView() throws IOException {
@@ -82,23 +79,18 @@ public class Controller {
         }
     }
 
-   private  File file;
     public void onClickEncrypt() throws IOException {
-        file = new File(FileName.getText());
-        String filePath = String.valueOf(Files.readAllLines(Paths.get(file.getPath())));
-        String str = new Caesar().encrypt(filePath);
+        String str = new Caesar().encrypt(file);
         FileWriter fileWriter = new FileWriter(file);
-        for(int i=0; i<str.length(); i++)
+        for (int i = 0; i < str.length(); i++)
             fileWriter.write(str.charAt(i));
         fileWriter.close();
     }
 
     public void onClickDecrypt() throws IOException {
-        file = new File(FileName.getText());
-        String filePath = String.valueOf(Files.readAllLines(Paths.get(file.getPath())));
-        String str = new Caesar().decrypt(filePath);
+        String str = new Caesar().decrypt(file);
         FileWriter fileWriter = new FileWriter(file);
-        for(int i=0; i<str.length(); i++)
+        for (int i = 0; i < str.length(); i++)
             fileWriter.write(str.charAt(i));
         fileWriter.close();
 
@@ -132,25 +124,28 @@ class Caesar {
     }
 
     // Encryption Method
-    public String encrypt(String secret) {
-        char[] mess = secret.toCharArray();
+    public String encrypt(File file) {
+        /*char[] mess = file.toCharArray();
         for (int i = 0; i < mess.length; i++)
             if (Character.isLowerCase(mess[i]))
                 mess[i] = encrypt[mess[i] - 'a'];
             else if (Character.isLowerCase(mess[i]))
                 mess[i] = encrypt[mess[i] - 'A'];
-        return Arrays.toString(mess);
+        return Arrays.toString(mess);*/
+        return "encrypted";
     }
 
     // Decryption Method \
-    public String decrypt(String secret) {
-        char[] mess = secret.toCharArray();
+    public String decrypt(File file) {
+       /* char[] mess = secret.toCharArray();
         for (int i = 0; i < mess.length; i++)
             if (Character.isLowerCase(mess[i]))
                 mess[i] = decrypt[mess[i] - 'a'];
             else if (Character.isUpperCase(mess[i]))
                 mess[i] = decrypt[mess[i] - 'A'];
-        return Arrays.toString(mess);
+        return Arrays.toString(mess);*/
+        return "decrypted";
+
     }
 
 }
