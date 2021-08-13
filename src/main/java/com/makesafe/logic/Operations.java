@@ -1,5 +1,6 @@
 package com.makesafe.logic;
 
+import com.makesafe.logic.Ciphers.Caesar;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.AnchorPane;
@@ -11,9 +12,6 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +27,7 @@ public class Operations {
         fileChooser.setTitle("Choose file ");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
        file = fileChooser.showOpenDialog(mainStage);
+       //return file.getName();
     }
 
     public void onClickView() throws IOException {
@@ -95,57 +94,4 @@ public class Operations {
         fileWriter.close();
 
     }
-}
-
-class Caesar {
-    public static final int ALPAHSIZE = 26;
-    public static final char[] largeAlpha = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
-    public static final char[] smallAlpha = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-    protected char[] encrypt = new char[ALPAHSIZE];
-    protected char[] decrypt = new char[ALPAHSIZE];
-
-    public Caesar() {
-        for (int i = 0; i < ALPAHSIZE; i++) {
-
-            // encryption and decryption for small alphabets
-            if (((int) smallAlpha[i] > 96) && ((int) smallAlpha[i] < 123)) {
-                encrypt[i] = smallAlpha[(i + 3) % ALPAHSIZE];
-                decrypt[encrypt[i] - 'a'] = smallAlpha[i];
-            }
-
-            // encryption and decryption for small alphabets
-            else if (((int) largeAlpha[i] > 64) && ((int) largeAlpha[i] < 91)) {
-                encrypt[i] = largeAlpha[(i + 3) % ALPAHSIZE];
-                decrypt[encrypt[i] - 'A'] = largeAlpha[i];
-            }
-        }
-    }
-
-    // Encryption Method
-    public String encrypt(File file) {
-        /*char[] mess = file.toCharArray();
-        for (int i = 0; i < mess.length; i++)
-            if (Character.isLowerCase(mess[i]))
-                mess[i] = encrypt[mess[i] - 'a'];
-            else if (Character.isLowerCase(mess[i]))
-                mess[i] = encrypt[mess[i] - 'A'];
-        return Arrays.toString(mess);*/
-        return "encrypted";
-    }
-
-    // Decryption Method \
-    public String decrypt(File file) {
-       /* char[] mess = secret.toCharArray();
-        for (int i = 0; i < mess.length; i++)
-            if (Character.isLowerCase(mess[i]))
-                mess[i] = decrypt[mess[i] - 'a'];
-            else if (Character.isUpperCase(mess[i]))
-                mess[i] = decrypt[mess[i] - 'A'];
-        return Arrays.toString(mess);*/
-        return "decrypted";
-
-    }
-
 }
