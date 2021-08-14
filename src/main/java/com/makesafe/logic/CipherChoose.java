@@ -1,17 +1,17 @@
-package com.makesafe.logic.Ciphers;
+package com.makesafe.logic;
 
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 
 public class CipherChoose {
     public ComboBox<Button> cipherChoose() {
         ComboBox<Button> ciphers = new ComboBox<>();
-        Button Caesar = new Button("Caesar");
-        Button Hill = new Button("Hill");
-        Button Playfair = new Button("Playfair");
+        Button caesar = new Button("Caesar");
 
-        ciphers.getItems().addAll(Caesar, Hill, Playfair);
+        Button hill = new Button("Hill");
+        Button playfair = new Button("Playfair");
+
+        ciphers.getItems().addAll(caesar, hill, playfair);
         return ciphers;
     }
 
