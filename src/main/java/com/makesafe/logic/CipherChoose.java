@@ -1,21 +1,12 @@
 package com.makesafe.logic;
 
-import javafx.scene.control.Button;
+import com.makesafe.logic.Ciphers.Ciphers;
 import javafx.scene.control.ComboBox;
 
 public class CipherChoose {
-    public ComboBox<Button> cipherChoose() {
-        ComboBox<Button> ciphers = new ComboBox<>();
-        Button caesar = new Button("Caesar");
-
-        Button hill = new Button("Hill");
-        Button playfair = new Button("Playfair");
-
-        ciphers.getItems().addAll(caesar, hill, playfair);
+    public ComboBox<Ciphers> cipherChoose() {
+        ComboBox<Ciphers> ciphers = new ComboBox<>();
+        ciphers.getItems().setAll(Ciphers.values());
         return ciphers;
-    }
-
-    public void cipherInfo() {
-
     }
 }

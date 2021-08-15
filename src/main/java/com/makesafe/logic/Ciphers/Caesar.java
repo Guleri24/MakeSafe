@@ -8,59 +8,58 @@ import javafx.scene.text.Text;
 import java.io.File;
 
 public class Caesar implements Cipher {
-    /*private static final int ALPAHSIZE = 26;
-    private static final char[] largeAlpha = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
-    private static final char[] smallAlpha = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-    protected char[] encrypt = new char[ALPAHSIZE];
-    protected char[] decrypt = new char[ALPAHSIZE];
-
-    public Caesar() {
-        for (int i = 0; i < ALPAHSIZE; i++) {
-
-            // encryption and decryption for small alphabets
-            encrypt[i] = smallAlpha[(i + 3) % ALPAHSIZE];
-            decrypt[encrypt[i] - 'a'] = smallAlpha[i];
-        }
-    }*/
-
+    private int shiftBy;
     // Encryption Method
     public static String encrypt(File file) {
 
         return "encrypted";
     }
 
-    // Decryption Method \
-    public String decrypt(File file) {
-       /* char[] mess = secret.toCharArray();
-        for (int i = 0; i < mess.length; i++)
-            if (Character.isLowerCase(mess[i]))
-                mess[i] = decrypt[mess[i] - 'a'];
-            else if (Character.isUpperCase(mess[i]))
-                mess[i] = decrypt[mess[i] - 'A'];
-        return Arrays.toString(mess);*/
-        return "decrypted";
+    @Override
+    public StringBuffer encrypt(String string) {
+        StringBuffer result = new StringBuffer();
 
+        for (int i = 0; i < string.length(); i++) {
+            if (Character.isUpperCase(string.charAt(i))) {
+                char ch = (char) (((int) string.charAt(i) +
+                        shiftBy - 65) % 26 + 65);
+                result.append(ch);
+            } else {
+                char ch = (char) (((int) string.charAt(i) +
+                        shiftBy - 97) % 26 + 97);
+                result.append(ch);
+            }
+        }
+        return result;
     }
 
     @Override
-    public String encrypt(String string) {
-        return null;
-    }
+    public StringBuffer decrypt(String string) {
+        int shiftBy = 5;
+        StringBuffer result = new StringBuffer();
 
-    @Override
-    public String decrypt(String string) {
-        return null;
+        for (int i = 0; i < string.length(); i++) {
+            if (Character.isUpperCase(string.charAt(i))) {
+                char ch = (char) (((int) string.charAt(i) +
+                        shiftBy - 65) % 26 + 65);
+                result.append(ch);
+            } else {
+                char ch = (char) (((int) string.charAt(i) +
+                        shiftBy - 97) % 26 + 97);
+                result.append(ch);
+            }
+        }
+        return result;
     }
 
     public HBox specificFunctions() {
         Text shift = new Text("Shift By");
         TextField shiftBy = new TextField();
-        System.out.println(shiftBy.getCharacters());
+        System.out.println(shiftBy.getText());
 
         return new HBox(shift, shiftBy);
     }
+
 
     public String cipherInfo() {
         return "The Caesar Cipher technique is one of the earliest and simplest method of \n" +
@@ -76,5 +75,22 @@ public class Caesar implements Cipher {
                 "Text : ATTACKATONCE\n" +
                 "Shift: 4\n" +
                 "Cipher: EXXEGOEXSRGI";
+    }
+
+    // Decryption Method \
+    public String decrypt(File file) {
+       /* char[] mess = secret.toCharArray();
+        for (int i = 0; i < mess.length; i++)
+            if (Character.isLowerCase(mess[i]))
+                mess[i] = decrypt[mess[i] - 'a'];
+            else if (Character.isUpperCase(mess[i]))
+                mess[i] = decrypt[mess[i] - 'A'];
+        return Arrays.toString(mess);*/
+        return "decrypted";
+
+    }
+
+    public void setShiftBy(int shiftBy) {
+        this.shiftBy = shiftBy;
     }
 }

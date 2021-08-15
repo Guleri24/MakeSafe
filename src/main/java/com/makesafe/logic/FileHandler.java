@@ -9,7 +9,12 @@ import javafx.stage.Stage;
 
 import java.awt.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,10 +24,17 @@ public class FileHandler {
     private final FileChooser fileChooser = new FileChooser();
     private File file;
 
-    public void onClickChoose(Stage mainStage) {
-        fileChooser.setTitle("Choose file ");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
+    public void onClickChoose(Stage mainStage) throws IOException {
+        fileChooser.setTitle("Choose file");
+        fileChooser.getInitialFileName();
         file = fileChooser.showOpenDialog(mainStage);
+        RandomAccessFile reader = new RandomAccessFile(file, "r");
+        FileChannel channel = reader.getChannel();
+        ByteBuffer buff = ByteBuffer.allocate(1024);
+        int noOfBytesRead = channel.read(buff);
+        String fileContent = new String(buff.array(), StandardCharsets.UTF_8);
+        System.out.println(noOfBytesRead + " " + fileContent);
+
         //return file.getName();
     }
     public void onClickView() throws IOException {

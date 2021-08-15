@@ -3,9 +3,9 @@ package com.makesafe.logic;
 import javafx.scene.layout.HBox;
 
 public interface Cipher {
-    String encrypt(String string);
+    StringBuffer encrypt(String string);
 
-    String decrypt(String string);
+    StringBuffer decrypt(String string);
 
     HBox specificFunctions();
 

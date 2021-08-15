@@ -6,13 +6,17 @@ import javafx.scene.layout.HBox;
 public class Hill implements Cipher {
 
     @Override
-    public String encrypt(String string) {
-        return null;
+    public StringBuffer encrypt(String string) {
+
+        StringBuffer result = new StringBuffer();
+        return result;
     }
 
     @Override
-    public String decrypt(String string) {
-        return null;
+    public StringBuffer decrypt(String string) {
+        StringBuffer result = new StringBuffer();
+
+        return result;
     }
 
     @Override
