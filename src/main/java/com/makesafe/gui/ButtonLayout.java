@@ -2,7 +2,6 @@ package com.makesafe.gui;
 
 import com.makesafe.logic.CipherChoose;
 import com.makesafe.logic.Ciphers.Caesar;
-import com.makesafe.logic.Ciphers.Ciphers;
 import com.makesafe.logic.FileHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -16,9 +15,12 @@ import java.io.IOException;
 public class ButtonLayout {
 
     public static GridPane buttonLayout(Stage mainStage) {
-        ComboBox<Ciphers> ciphers = new CipherChoose().cipherChoose();
+        ComboBox<CipherChoose.Ciphers> ciphers = new CipherChoose().cipherChoose();
         Button chooseFile = new Button("Choose Text File");
         Text file = new Text("no file chosen");
+        ciphers.setOnAction(event -> {
+            System.out.println(ciphers);
+        });
         RadioButton saveOriginal = new RadioButton("Save Original");
         saveOriginal.fire();
         saveOriginal.setOnAction(e -> {
