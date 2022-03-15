@@ -11,6 +11,7 @@ import javafx.stage.StageStyle;
 
 public class MakeSafeGui {
     public MakeSafeGui(final Stage mainStage) {
+
         mainStage.setTitle("MakeSafe");
 
         BorderPane mainWindow = new BorderPane();
